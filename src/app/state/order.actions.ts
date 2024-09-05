@@ -22,6 +22,11 @@ export const updateBeverage = createAction(
   props<{ orderItem: OrderItem }>()
 );
 
+export const removeBeverage = createAction(
+  '[Order] Remove Beverage',
+  props<{ beverage: Beverage }>()
+);
+
 export const calculateTotal = createAction(
   '[Order] Calculate Total'
 );

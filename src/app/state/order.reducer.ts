@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { addBeverage, updateOrder, calculateTotal,clearOrders,addOrder, updateBeverage } from './order.actions';
+import { addBeverage, updateOrder, calculateTotal,clearOrders,addOrder, updateBeverage, removeBeverage } from './order.actions';
 import { Order } from './app.state';
 
 export const initialOrderState: Order = {
@@ -46,6 +46,13 @@ export const orderReducer = createReducer(
     ...state,
     orders: [...state.items, orderItem]
   })),
+  
+  on(removeBeverage, (state, { beverage }) => ({
+    ...state,
+    items: state.items.filter(orderItem => orderItem.beverage.name !== beverage.name)
+  })),
+  
+
   on(calculateTotal, (state) => {
     const total = state.items.reduce((sum, item) => sum + item.totalPrice, 0);
     return { ...state, total };

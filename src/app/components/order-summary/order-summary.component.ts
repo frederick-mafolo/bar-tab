@@ -24,12 +24,10 @@ export class OrderSummaryComponent {
     this.peopleCount$ = this.store.select(selectPeopleCount);
   }
 
-  // Dispatch an action to clear the orders
   clearTab(): void {
     this.store.dispatch(clearOrders());
   }
 
-  // Dispatch a combined action to update the order items and the number of people splitting the bill
   updatePeopleCount(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     const peopleCount = parseInt(inputElement.value, 10) || 1;
