@@ -1,0 +1,15 @@
+<div class="tap-summary">
+    <h2>Tap</h2>
+    <div *ngIf="(orders$ | async)?.length; else emptyOrders">
+      <div *ngFor="let order of orders$ | async" class="order-item">
+        {{ order.beverage.name }} x{{ order.quantity }}: R{{ order.totalPrice.toFixed(2) }}
+      </div>
+      <div class="button-container">
+        <button mat-raised-button color="accent" (click)="goToSummary()">Go to Summary</button>
+      </div>
+    </div>
+    <ng-template #emptyOrders>
+      <p>No beverages added yet.</p>
+    </ng-template>
+</div>
+  

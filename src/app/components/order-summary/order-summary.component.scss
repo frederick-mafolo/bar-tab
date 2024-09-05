@@ -1,0 +1,44 @@
+.order-summary {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .order-content {
+    padding: 10px;
+  }
+  
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  
+  .order-price {
+    font-weight: bold;
+  }
+  
+  .total-cost, .price-per-person {
+    margin-top: 15px;
+    font-size: 18px;
+    text-align: right;
+  }
+  
+  .people-count-field {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .button-group button {
+    width: 48%;
+  }
+  

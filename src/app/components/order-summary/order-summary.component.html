@@ -1,0 +1,34 @@
+<div class="order-summary mat-elevation-z3">
+  <mat-toolbar color="primary">Order Summary</mat-toolbar>
+  
+  <div class="order-content">
+    <div *ngIf="(orders$ | async)?.length; else emptyOrders">
+      <div *ngFor="let order of orders$ | async" class="order-item">
+        <span>{{ order.beverage.name }} x{{ order.quantity }}:</span> 
+        <span class="order-price">R{{ order.totalPrice.toFixed(2) }}</span>
+      </div>
+
+      <div class="total-cost">
+        <strong>Total Cost: R{{ totalCost$ | async | number:'1.2-2' }}</strong>
+      </div>
+
+      <mat-form-field appearance="fill" class="people-count-field">
+        <mat-label>People Count</mat-label>
+        <input matInput type="number" min="1" max="50" (input)="updatePeopleCount($event)" [value]="peopleCount$ | async" />
+      </mat-form-field>
+
+      <div class="price-per-person">
+        <strong>Price Per Person: R{{ pricePerPerson$ | async | number:'1.2-2' }}</strong>
+      </div>
+
+      <div class="button-group">
+        <button mat-raised-button color="accent" (click)="exportAsPDF()">Export as PDF</button>
+        <button mat-raised-button color="warn" (click)="clearTab()">Clear Tab</button>
+      </div>
+    </div>
+
+    <ng-template #emptyOrders>
+      <p>No orders yet. Start adding beverages to your tab!</p>
+    </ng-template>
+  </div>
+</div>

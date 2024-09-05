@@ -1,0 +1,27 @@
+<div class="beverage-list">
+  <div *ngFor="let beverage of beverages" class="beverage-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ beverage.name }}</mat-card-title>
+        <mat-card-subtitle>Price: R{{ beverage.price.toFixed(2) }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Quantity</mat-label>
+          <input matInput type="number" min="0" [(ngModel)]="quantities[beverage.name]" (input)="onQuantityChange()" />
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="add-all-button">
+    <button mat-raised-button color="primary" (click)="addAllToTab()" [disabled]="addButtonDisabled">
+      Add All to Tab
+    </button>
+    <button mat-stroked-button color="warn" (click)="clearTab()">
+      Clear Tab
+    </button>
+  </div>
+</div>
+
+<app-tap></app-tap>
